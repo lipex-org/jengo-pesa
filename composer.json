@@ -1,6 +1,6 @@
 {
   "name": "jengo/pesa",
-  "description": "Unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with M-Pesa Daraja 2.0, Pesapal v3, Stripe, and Flutterwave support.",
+  "description": "Unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with M-Pesa Daraja 3.0, Pesapal v3, Stripe, and Flutterwave support.",
   "type": "library",
   "license": "MIT",
   "authors": [

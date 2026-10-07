@@ -1,0 +1,96 @@
+{
+  "name": "jengo/pesa",
+  "description": "Unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with M-Pesa Daraja 3.0, Pesapal v3, Stripe, and Flutterwave support.",
+  "facade": "Jengo\\Pesa\\Pesa",
+  "config": "Config\\Pesa",
+  "gateways": [
+    {
+      "name": "mpesa",
+      "driver": "Jengo\\Pesa\\Drivers\\Mpesa\\MpesaGateway",
+      "description": "Safaricom Daraja 3.0 driver supporting STK Push, C2B URL registration & confirmation, B2C disbursements, and status queries."
+    },
+    {
+      "name": "pesapal",
+      "driver": "Jengo\\Pesa\\Drivers\\Pesapal\\PesapalGateway",
+      "description": "Pesapal v3 API driver for hosted checkout, mobile money, cards, and IPN status tracking."
+    },
+    {
+      "name": "stripe",
+      "driver": "Jengo\\Pesa\\Drivers\\Stripe\\StripeGateway",
+      "description": "Stripe driver for hosted checkout sessions, card payments, and webhook signature verification."
+    },
+    {
+      "name": "fake",
+      "driver": "Jengo\\Pesa\\Drivers\\Fake\\FakeGateway",
+      "description": "In-memory mock gateway for unit testing and CI pipelines."
+    }
+  ],
+  "dtos": [
+    {
+      "class": "Jengo\\Pesa\\DTO\\StkRequest",
+      "description": "Data Transfer Object for initiating an M-Pesa STK Push prompt on customer phones."
+    },
+    {
+      "class": "Jengo\\Pesa\\DTO\\StkResponse",
+      "description": "Data Transfer Object containing STK Push initiation results and checkoutRequestId."
+    },
+    {
+      "class": "Jengo\\Pesa\\DTO\\CheckoutRequest",
+      "description": "Data Transfer Object for creating hosted checkout payment links (Pesapal, Stripe)."
+    },
+    {
+      "class": "Jengo\\Pesa\\DTO\\CheckoutResponse",
+      "description": "Data Transfer Object containing redirect URL and reference for hosted checkout."
+    },
+    {
+      "class": "Jengo\\Pesa\\DTO\\DisbursementRequest",
+      "description": "Data Transfer Object for initiating B2C payouts or salary disbursements."
+    },
+    {
+      "class": "Jengo\\Pesa\\DTO\\DisbursementResponse",
+      "description": "Data Transfer Object containing payout dispatch status and conversation IDs."
+    },
+    {
+      "class": "Jengo\\Pesa\\DTO\\TransactionQueryResponse",
+      "description": "Data Transfer Object representing transaction status query results and receipt numbers."
+    }
+  ],
+  "events": [
+    {
+      "class": "Jengo\\Pesa\\Events\\PaymentInitiated",
+      "description": "Dispatched when a payment transaction is started and recorded in the ledger."
+    },
+    {
+      "class": "Jengo\\Pesa\\Events\\PaymentSucceeded",
+      "description": "Dispatched upon verified successful payment callback/webhook or transaction query."
+    },
+    {
+      "class": "Jengo\\Pesa\\Events\\PaymentFailed",
+      "description": "Dispatched when a payment fails or is rejected by user/provider."
+    },
+    {
+      "class": "Jengo\\Pesa\\Events\\PaymentReversed",
+      "description": "Dispatched when a completed payment transaction is reversed."
+    }
+  ],
+  "commands": [
+    {
+      "command": "php spark jengo:pesa mpesa register-c2b",
+      "description": "Registers C2B validation and confirmation URLs with Safaricom Daraja 3.0 API."
+    },
+    {
+      "command": "php spark jengo:install pesa",
+      "description": "Runs automated installation, publishes Config/Pesa.php, and migrates the pesa_transactions table."
+    }
+  ],
+  "usage_examples": [
+    {
+      "title": "M-Pesa STK Push",
+      "code": "use Jengo\\Pesa\\Pesa;\nuse Jengo\\Pesa\\DTO\\StkRequest;\n\n$response = Pesa::gateway('mpesa')->stkPush(new StkRequest(\n    phone: '0712345678',\n    amount: 1500,\n    accountReference: 'INV-1002',\n    transactionDesc: 'Subscription'\n));"
+    },
+    {
+      "title": "Hosted Checkout (Pesapal / Stripe)",
+      "code": "use Jengo\\Pesa\\Pesa;\nuse Jengo\\Pesa\\DTO\\CheckoutRequest;\n\n$checkout = Pesa::gateway('pesapal')->checkout(new CheckoutRequest(\n    amount: 2500,\n    currency: 'KES',\n    description: 'Order #442',\n    callbackUrl: site_url('/orders/442/verify')\n));\nreturn redirect()->to($checkout->redirectUrl);"
+    }
+  ]
+}

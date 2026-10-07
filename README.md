@@ -112,10 +112,20 @@ Events::on('pesa.payment_succeeded', static function (PaymentSucceeded $event) {
 
 ```bash
 # Register M-Pesa C2B Paybill / Till URLs
-php spark pesa:mpesa:register-c2b --shortcode=600999
+php spark jengo:pesa mpesa:register-c2b --shortcode=600999
 ```
 
 ---
+
+## Configuration
+
+All credentials and options are configured in `app/Config/Pesa.php`. CodeIgniter 4 automatically maps `.env` variables to config properties using the config class name prefix (e.g. `Pesa.default`, `Pesa.gateways.mpesa.consumer_key`, `Pesa.gateways.mpesa.passkey`):
+
+```env
+# Optional .env overrides matching app/Config/Pesa.php
+Pesa.default = mpesa
+Pesa.currency = KES
+```
 
 ## License
 

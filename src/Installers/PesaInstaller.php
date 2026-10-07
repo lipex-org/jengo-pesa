@@ -64,10 +64,10 @@ class PesaInstaller extends AbstractInstaller
         // 2. Run Database Migrations for pesa_transactions table
         CLI::write('Running Jengo Pesa migrations...', 'cyan');
         try {
-            command('migrate -k jengo/pesa');
+            command('migrate --all');
             CLI::write('Executed pesa migrations successfully.', 'green');
         } catch (\Throwable $e) {
-            CLI::write('Note: Run `php spark migrate -k jengo/pesa` manually if database is not yet connected.', 'yellow');
+            CLI::write('Note: Run `php spark migrate --all` manually if database is not yet connected.', 'yellow');
         }
 
         CLI::newLine();

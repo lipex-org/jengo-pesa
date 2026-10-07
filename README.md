@@ -1,6 +1,6 @@
 # Jengo Pesa
 
-A unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with first-class support for Kenyan and African payment networks (M-Pesa Daraja 2.0, Pesapal v3, Flutterwave) alongside global providers (Stripe, PayPal).
+A unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with first-class support for Kenyan and African payment networks (M-Pesa Daraja 3.0, Pesapal v3, Flutterwave) alongside global providers (Stripe, PayPal).
 
 Documentation: https://lipex-org.github.io/jengophp.com/packages/pesa/
 
@@ -36,7 +36,7 @@ $checkout = Pesa::gateway('pesapal')->checkout(new CheckoutRequest(
 
 ## Documentation
 
-For full guides on M-Pesa Daraja 2.0 workflows (STK, C2B, B2C), hosted checkouts (Pesapal v3, Stripe), transaction ledgers, auto-routed webhooks, and CLI commands, visit https://lipex-org.github.io/jengophp.com/packages/pesa/.
+For full guides on M-Pesa Daraja 3.0 workflows (STK, C2B, B2C), hosted checkouts (Pesapal v3, Stripe), transaction ledgers, auto-routed webhooks, and CLI commands, visit https://lipex-org.github.io/jengophp.com/packages/pesa/.
 
 ## License
 

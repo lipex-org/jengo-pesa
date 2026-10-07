@@ -8,8 +8,7 @@ Documentation: https://lipex-org.github.io/jengophp.com/packages/pesa/
 
 ```bash
 composer require jengo/pesa
-php spark migrate -k jengo/pesa
-php spark config:publish Jengo\\Pesa\\Config\\Pesa
+php spark jengo:install pesa
 ```
 
 ## Quick Start

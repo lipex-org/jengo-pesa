@@ -111,7 +111,10 @@ Events::on('pesa.payment_succeeded', static function (PaymentSucceeded $event) {
 ### 4. CLI Commands
 
 ```bash
-# Register M-Pesa C2B Paybill / Till URLs
+# Register M-Pesa C2B Paybill / Till URLs using nested sub-variants
+php spark jengo:pesa mpesa register-c2b --shortcode=600999
+
+# Or using the colon syntax
 php spark jengo:pesa mpesa:register-c2b --shortcode=600999
 ```
 

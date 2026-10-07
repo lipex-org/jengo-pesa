@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jengo\Pesa\Commands\Variants\Pesa;
+namespace Jengo\Pesa\Commands\Variants\Pesa\Mpesa;
 
 use CodeIgniter\CLI\CLI;
 use Jengo\Base\Commands\Contracts\CommandVariantInterface;
@@ -13,7 +13,7 @@ class RegisterC2BVariant implements CommandVariantInterface
 {
     public static function name(): string
     {
-        return 'mpesa:register-c2b';
+        return 'register-c2b';
     }
 
     public static function description(): string

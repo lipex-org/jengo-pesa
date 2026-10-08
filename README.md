@@ -1,8 +1,22 @@
-# Jengo Pesa
+<p align="center">
+  <a href="https://lipex-org.github.io/jengophp.com/">
+    <img src="https://raw.githubusercontent.com/lipex-org/docs/main/public/logo-full.png" width="220" alt="Jengo Logo">
+  </a>
+</p>
 
-A unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with first-class support for Kenyan and African payment networks (M-Pesa Daraja 3.0, Pesapal v3, Flutterwave) alongside global providers (Stripe, PayPal).
+<h1 align="center">Jengo Pesa</h1>
 
-Documentation: https://lipex-org.github.io/jengophp.com/packages/pesa/
+<p align="center">
+  <strong>Unified multi-gateway payment processing subsystem for CodeIgniter 4 and the Jengo Framework with first-class support for M-Pesa Daraja 3.0, Pesapal v3, Stripe, and Flutterwave.</strong>
+</p>
+
+<p align="center">
+  <a href="https://lipex-org.github.io/jengophp.com/packages/pesa"><strong>Documentation</strong></a> •
+  <a href="https://github.com/lipex-org/pesa/blob/main/LICENSE"><strong>License</strong></a> •
+  <a href="https://github.com/lipex-org/pesa/issues"><strong>Issues</strong></a>
+</p>
+
+---
 
 ## Installation
 

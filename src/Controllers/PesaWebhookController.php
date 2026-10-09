@@ -43,8 +43,14 @@ class PesaWebhookController extends Controller
                 ]);
         }
 
-        // Process transaction state & ledger updates
-        $this->processTransactionState($gateway, $payload);
+        // Process transaction state & ledger updates asynchronously via jengo/queues if available
+        if (function_exists('defer')) {
+            defer(function () use ($gateway, $payload) {
+                $this->processTransactionState($gateway, $payload);
+            });
+        } else {
+            $this->processTransactionState($gateway, $payload);
+        }
 
         return $handler->createAcknowledgmentResponse($payload);
     }

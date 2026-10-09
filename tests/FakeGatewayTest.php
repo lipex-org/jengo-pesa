@@ -15,6 +15,26 @@ use Jengo\Pesa\Pesa;
  */
 final class FakeGatewayTest extends CIUnitTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        require_once __DIR__ . '/../src/Database/Migrations/2026_10_07_000001_create_pesa_transactions_table.php';
+
+        $forge = \Config\Database::forge();
+        $migration = new \Jengo\Pesa\Database\Migrations\CreatePesaTransactionsTable($forge);
+        $migration->up();
+    }
+
+    protected function tearDown(): void
+    {
+        $forge = \Config\Database::forge();
+        $migration = new \Jengo\Pesa\Database\Migrations\CreatePesaTransactionsTable($forge);
+        $migration->down();
+
+        parent::tearDown();
+    }
+
     public function testStkPushWorkflow(): void
     {
         $gateway = Pesa::gateway('fake');

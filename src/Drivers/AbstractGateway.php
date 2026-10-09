@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jengo\Pesa\Drivers;
 
+use CodeIgniter\Events\Events;
 use CodeIgniter\HTTP\CURLRequest;
 use Config\Services;
 use Jengo\Pesa\Config\Pesa as PesaConfig;
